@@ -12,12 +12,16 @@ def echo(message):
 @bot.message_handler(content_types=['text', ])
 def audiosender(message):
     with open('log.txt', 'a', encoding='utf-8') as f:
-        f.write(message.from_user.first_name+','+message.text+','+str(message.chat.id))
+        f.write(message.from_user.first_name+','+message.text+','+str(message.chat.id)+'\n')
     if os.path.exists(f'content/{message.text}.mp3') is True:
         bot.send_audio(message.chat.id, audio=open(f'content/{message.text}.mp3', 'rb'))
         print(message.text, message.from_user.first_name)
     else:
         bot.reply_to(message, 'check the number and try again')
 
+@bot.message_handler(content_types=['text', ])
+def admin(message):
+    if message.chat.id == 389900042:
+        
 
 bot.polling()
