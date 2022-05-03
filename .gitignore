@@ -3,3 +3,4 @@ config.py
 log.txt
 cache/
 __pycache__/
+content/
